@@ -19,7 +19,6 @@ public class EmployeeController {
         employeeService = theEmployeeService;
     }
 
-    // Add mapping for "/list"
     @GetMapping("/list")
     public String listEmployees(Model theModel) {
 
@@ -29,6 +28,16 @@ public class EmployeeController {
         // add to the spring model
         theModel.addAttribute("employees", theEmployees);
 
-        return "list-employees";
+        return "employees/list-employees";
+    }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model theModel) {
+
+        Employee theEmployee = new Employee();
+
+        theModel.addAttribute("employee", theEmployee);
+
+        return "/employees/employee-form";
     }
 }
